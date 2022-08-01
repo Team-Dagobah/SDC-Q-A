@@ -16,7 +16,6 @@ const getQuestions = async (req) => {
   var id = req.query.product_id;
   var page = req.query.page || 1;
   var count = req.query.count || 5;
-  console.log(req.query)
   var questions = await client.query(`SELECT
 questions.id AS question_id,
 questions.body AS question_body,
@@ -45,7 +44,7 @@ questions.reported AS reported,
     ) answer
   ) AS answers
 FROM questions
-WHERE product_id = ${id} AND reported = 0 AND questions.id > ${(page - 1)*count} order by questions.id asc limit ${count};`
+WHERE product_id = ${id} AND reported = 0;`
 )
 return questions;
 }
@@ -70,7 +69,7 @@ const getSpecificAnswers = async (req) => {
       ) item
     ) AS photos
   FROM answers
-  WHERE question_id = ${id} AND reported = 0 AND answers.id > ${(page - 1)*count} order by answers.id asc limit ${count};`
+  WHERE question_id = ${id} AND reported = 0;`
   )
   return answers;
   }

@@ -9,19 +9,28 @@ app.use(express.json());
 app.use(express.static('dist'));
 
 app.get('/qa/questions', (req, res) => {
+  var page = req.query.page || 1;
+  var count = req.query.count || 5;
   getQuestions(req)
   .then((questions) => {
     console.log('got response from server');
-    res.status(200).send(questions.rows);
+    let start = Number((page - 1) * count);
+    console.log(page - 1, count, start)
+    let end = start + Number(count);
+    res.status(200).send(questions.rows.slice(start, end));
   })
   .catch(err => {console.log(err)});
 })
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
+  var page = req.query.page || 1;
+  var count = req.query.count || 5;
   getSpecificAnswers(req)
   .then((answers) => {
     console.log('got response from server');
-    res.status(200).send(answers.rows);
+    let start = Number((page - 1) * count);
+    let end = start + Number(count);
+    res.status(200).send(answers.rows.slice(start, end));
   })
   .catch(err => {console.log(err)});
 })
