@@ -1,6 +1,6 @@
-const { Client } = require('pg');
+const { Pool } = require('pg');
 // should probably switch to const Pool = require('pg').Pool
-const client = new Client({
+const client = new Pool({
   host: 'localhost',
   user: 'postgres',
   port: 5432,

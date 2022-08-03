@@ -13,9 +13,8 @@ app.get('/qa/questions', (req, res) => {
   var count = req.query.count || 5;
   getQuestions(req)
   .then((questions) => {
-    console.log('got response from server');
+    console.log('got response from server', req.query);
     let start = Number((page - 1) * count);
-    console.log(page - 1, count, start)
     let end = start + Number(count);
     res.status(200).send(questions.rows.slice(start, end));
   })
