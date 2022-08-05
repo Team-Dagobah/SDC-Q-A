@@ -1,11 +1,15 @@
 const { Pool } = require('pg');
 // should probably switch to const Pool = require('pg').Pool
 const client = new Pool({
-  host: 'localhost',
-  user: 'postgres',
+  // host: 'localhost',
+  host: '54.215.34.254',
+  // user: 'postgres',
+  user: 'zachs',
   port: 5432,
-  password: 'SDC22',
-  database: 'sdc'
+  // password: 'SDC22',
+  password: 'sdc22dbms!',
+  // database: 'sdc'
+  database: 'postgres'
 });
 
 client.connect();

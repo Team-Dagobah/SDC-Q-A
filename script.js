@@ -8,10 +8,10 @@ export let options = {
     { duration: '10s', target: 50 },
     { duration: '10s', target: 100 },
     { duration: '10s', target: 200 },
-    { duration: '10s', target: 250 },
-    { duration: '10s', target: 300 },
     { duration: '10s', target: 400 },
-    { duration: '10s', target: 400 },
+    { duration: '10s', target: 650 },
+    { duration: '10s', target: 1000 },
+    { duration: '5s', target: 1000 },
     { duration: '30s', target: 0 },
   ]
 }
@@ -27,8 +27,5 @@ export default function () {
     'recieved data': (r) => r.body !== undefined
   });
   sleep(.1);
-
-
-  // http.get(domain + '?product_id=5')
 }
 
